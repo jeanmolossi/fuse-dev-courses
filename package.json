@@ -6,7 +6,10 @@
   "scripts": {
     "dev:base": "webpack serve --config webpack.dev.js --open",
     "dev": "yarn dev:base",
-    "test": "jest"
+    "test": "jest --passWithNoTests",
+    "test:watch": "yarn test --watch",
+    "test:staged": "yarn test --findRelatedTests",
+    "test:ci": "yarn test --coverage"
   },
   "dependencies": {
     "@date-io/core": "1.3.13",
@@ -114,6 +117,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "git-commit-msg-linter": "^3.0.0",
     "html-webpack-plugin": "^4.5.0",
     "js-beautify": "1.13.0",
     "postcss": "^7",
