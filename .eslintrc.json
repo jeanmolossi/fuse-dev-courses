@@ -15,10 +15,30 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
     "prettier/prettier": "error",
     "no-useless-constructor": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        },
+        "newlinesBetween": "never",
+        "groups": [
+          "/^react$/",
+          "module",
+          "/^@shared/",
+          "/^@modules/",
+          "/^@//",
+          ["parent", "sibling"],
+          "index"
+        ]
+      }
+    ]
   }
 }
