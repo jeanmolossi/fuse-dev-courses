@@ -137,6 +137,7 @@
     "source-map-explorer": "2.5.0",
     "tailwindcss": "2.0.1-compat",
     "tailwindcss-dir": "4.0.0",
+    "ts-jest": "^26.4.4",
     "typescript": "^4.1.3",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0",
