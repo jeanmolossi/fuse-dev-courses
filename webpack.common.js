@@ -4,9 +4,9 @@ const path = require('path');
 module.exports = {
   entry: './src/main/index.tsx',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'main-bundle-[hash].js',
-    publicPath: '/',
+    path: path.join(__dirname, 'public'),
+    filename: 'js/bundle.js',
+    publicPath: '/public',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss'],
