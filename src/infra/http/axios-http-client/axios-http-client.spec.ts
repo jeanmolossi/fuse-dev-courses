@@ -5,14 +5,18 @@ import { AxiosHttpClient } from './axios-http-client';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe('FetchHttpClient', () => {
-  test('Should call fetch with correct URL', async () => {
-    const url = faker.internet.url();
+const makeSut = (): AxiosHttpClient => {
+  return new AxiosHttpClient();
+};
 
-    const sut = new AxiosHttpClient();
+describe('FetchHttpClient', () => {
+  test('Should call fetch with correct URL and verb', async () => {
+    const sut = makeSut();
+
+    const url = faker.internet.url();
 
     await sut.post({ url });
 
-    expect(mockedAxios).toHaveBeenCalledWith(url);
+    expect(mockedAxios.post).toHaveBeenCalledWith(url);
   });
 });
