@@ -32,7 +32,7 @@ describe('AxiosHttpClient', () => {
     expect(mockedAxios.post).toHaveBeenCalledWith(url, body);
   });
 
-  test('Should return the correct statusCode and body', async () => {
+  test('Should return the correct statusCode and body', () => {
     const request = mockPostRequest();
 
     const { sut, mockedAxios } = makeSut();
