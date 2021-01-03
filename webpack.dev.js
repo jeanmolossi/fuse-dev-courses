@@ -40,6 +40,7 @@ module.exports = merge(common, {
     compress: true,
     hot: true,
     port: 3001,
+    host: '192.168.0.107',
   },
   plugins: [
     new DefinePlugin({

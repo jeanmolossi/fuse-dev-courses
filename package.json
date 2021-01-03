@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:base": "webpack-dev-server --config webpack.dev.js --open",
+    "dev:base": "webpack serve --config webpack.dev.js --open",
     "dev": "yarn dev:base",
     "test": "jest --passWithNoTests",
     "test:watch": "yarn test --watch",
