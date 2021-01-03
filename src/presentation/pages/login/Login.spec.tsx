@@ -5,6 +5,7 @@ import {
   fireEvent,
   cleanup,
 } from '@testing-library/react';
+import faker from 'faker';
 import { BrowserRouter } from 'react-router-dom';
 import { ValidationSpy } from '@/presentation/test';
 import Login from './Login';
@@ -56,20 +57,24 @@ describe('Login Component', () => {
       .getByTestId('email-email-field')
       .querySelector('input');
 
+    const fakeEmail = faker.internet.email();
+
     fireEvent.input(emailField, {
-      target: { value: 'valid-email' },
+      target: { value: fakeEmail },
     });
 
     expect(validationSpy.fieldName).toBe('email');
-    expect(validationSpy.fieldValue).toBe('valid-email');
+    expect(validationSpy.fieldValue).toBe(fakeEmail);
 
     const passwordField = sut
       .getByTestId('password-password-field')
       .querySelector('input');
 
-    fireEvent.input(passwordField, { target: { value: 'valid-password' } });
+    const fakePassword = faker.internet.password();
+
+    fireEvent.input(passwordField, { target: { value: fakePassword } });
 
     expect(validationSpy.fieldName).toBe('password');
-    expect(validationSpy.fieldValue).toBe('valid-password');
+    expect(validationSpy.fieldValue).toBe(fakePassword);
   });
 });
