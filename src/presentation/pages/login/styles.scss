@@ -9,8 +9,8 @@
 
   background-image: linear-gradient(
     to right,
-    $palettePrimaryMain 0%,
-    $palettePrimaryDark 100%
+    $palettePrimaryDark 0%,
+    $palettePrimaryMain 100%
   );
 
   .card__content {
@@ -18,6 +18,7 @@
     flex-direction: column;
     padding: 3.2rem;
     max-width: 28rem;
+    width: 100%;
     row-gap: 0.8rem;
     background-color: $paletteBackgroundDefault;
 
@@ -62,6 +63,41 @@
     hr {
       width: 25%;
       background-color: #ffffff70;
+    }
+  }
+
+  .flex__cards {
+    display: flex;
+
+    > div:nth-child(2) {
+      flex: 1;
+
+      background-image: linear-gradient(
+        to left,
+        $fuseDark800 0%,
+        $fuseDark500 100%
+      );
+
+      width: 100%;
+      min-width: 48rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .hero_section {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 24rem;
+    row-gap: 2.4rem;
+
+    h3 {
+      font-weight: bold;
     }
   }
 }

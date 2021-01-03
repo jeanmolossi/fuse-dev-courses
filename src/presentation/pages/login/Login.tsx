@@ -15,8 +15,8 @@ import styles from './styles.scss';
 const Login = (): JSX.Element => {
   return (
     <div className={styles.login}>
-      <div>
-        <Card>
+      <div className={styles.flex__cards}>
+        <Card square>
           <CardContent className={styles.card__content}>
             <Typography variant="h6">Acesse sua conta</Typography>
 
@@ -96,6 +96,19 @@ const Login = (): JSX.Element => {
               <span>Ainda não tem uma conta?</span>
               <Link to="/pages/auth/register">Crie uma conta</Link>
             </div>
+          </CardContent>
+        </Card>
+
+        <Card square>
+          <CardContent className={styles.hero_section}>
+            <Typography variant="h3">Bem vindo a FUSE Code</Typography>
+
+            <Typography variant="subtitle1">
+              Poderosa plataforma de ensino online. Uma solução web para
+              desenvolvedores web.
+            </Typography>
+
+            <Typography>Aprenda, crie e projete!</Typography>
           </CardContent>
         </Card>
       </div>
