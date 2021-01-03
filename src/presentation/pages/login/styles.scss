@@ -33,6 +33,13 @@
       row-gap: 0.8rem;
       flex-direction: column;
     }
+
+    @media (min-width: 425px) {
+      min-width: 28rem;
+    }
+    @media (max-width: 960px) {
+      padding: 1.6rem;
+    }
   }
 
   .password__remeber {
@@ -69,6 +76,10 @@
   .flex__cards {
     display: flex;
 
+    > div {
+      transition: all 0.2s;
+    }
+
     > div:nth-child(2) {
       flex: 1;
 
@@ -79,11 +90,15 @@
       );
 
       width: 100%;
-      min-width: 48rem;
+      min-width: 32rem;
 
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @media (max-width: 960px) {
+        display: none;
+      }
     }
   }
 
