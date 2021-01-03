@@ -23,7 +23,6 @@ const TextInput = ({
 
   return (
     <TextField
-      id="outlined-basic"
       className={[styles.input_label, className].join(' ')}
       label={label}
       type={type}
