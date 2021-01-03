@@ -44,6 +44,7 @@ const TextInput = ({
           onChange(e);
         }
       }}
+      data-testid={`${name}-${type}-field`}
     />
   );
 };
