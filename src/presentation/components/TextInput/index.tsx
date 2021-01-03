@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField, TextFieldProps } from '@material-ui/core';
+import { formContext } from '@/presentation/hooks/useForm';
 import styles from './styles.scss';
 
 type TextInputProps = {
@@ -17,9 +18,11 @@ const TextInput = ({
   autoFocus,
   required = false,
   fullWidth = true,
+  onChange,
+  helperText = '',
   ...rest
 }: TextInputProps): JSX.Element => {
-  const [value, setValue] = useState('');
+  const { handleChangeField, values, errors } = useContext(formContext);
 
   return (
     <TextField
@@ -27,15 +30,20 @@ const TextInput = ({
       label={label}
       type={type}
       name={name}
-      value={value}
+      value={values[name] || ''}
       variant={variant}
       autoFocus={autoFocus}
       required={required}
       fullWidth={fullWidth}
-      onChange={e => {
-        setValue(e.target.value);
-      }}
       {...rest}
+      error={!!errors[name]}
+      helperText={helperText || (errors[name] ? errors[name] : helperText)}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        handleChangeField(e);
+        if (onChange) {
+          onChange(e);
+        }
+      }}
     />
   );
 };

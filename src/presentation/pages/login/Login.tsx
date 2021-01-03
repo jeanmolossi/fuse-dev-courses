@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -10,9 +10,13 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { TextInput, Button } from '@/presentation/components';
+import { FormHandler } from '@/presentation/hooks/useForm';
 import styles from './styles.scss';
 
 const Login = (): JSX.Element => {
+  const [isEmailFilled, setIsEmailFilled] = useState(false);
+  const [isPasswordFilled, setIsPasswordFilled] = useState(false);
+
   return (
     <div className={styles.login}>
       <div className={styles.flex__cards}>
@@ -20,11 +24,9 @@ const Login = (): JSX.Element => {
           <CardContent className={styles.card__content}>
             <Typography variant="h6">Acesse sua conta</Typography>
 
-            <form
-              name="loginForm"
-              noValidate
-              onSubmit={() => {
-                //
+            <FormHandler
+              onSubmit={data => {
+                console.log(data);
               }}
               className={styles.form__section}
             >
@@ -34,6 +36,7 @@ const Login = (): JSX.Element => {
                 type="email"
                 required
                 variant="outlined"
+                onChange={e => setIsEmailFilled(!!e.target.value)}
               />
 
               <TextInput
@@ -42,6 +45,7 @@ const Login = (): JSX.Element => {
                 type="password"
                 required
                 variant="outlined"
+                onChange={e => setIsPasswordFilled(!!e.target.value)}
               />
 
               <div className={styles.password__remeber}>
@@ -69,12 +73,13 @@ const Login = (): JSX.Element => {
                 variant="contained"
                 color="primary"
                 aria-label="Entrar"
-                disabled
+                disabled={!isPasswordFilled || !isEmailFilled}
                 fullWidth
+                type="submit"
               >
                 Entrar
               </Button>
-            </form>
+            </FormHandler>
 
             <div className={styles.form__divider}>
               <Divider light />
