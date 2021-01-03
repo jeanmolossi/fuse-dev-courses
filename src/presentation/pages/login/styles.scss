@@ -1,34 +1,67 @@
-$white: #fff;
-$black: #000;
-$background: #f2f2f2;
-$primary: #880e4f;
-$primaryDark: #560027;
-$primaryLight: #bc477b;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: $background;
-}
+@import '../../../presentation/styles/colors.scss';
 
 .login {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 
-  .header {
-    background-color: $primary;
+  background-image: linear-gradient(
+    to right,
+    $palettePrimaryMain 0%,
+    $palettePrimaryDark 100%
+  );
+
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    padding: 3.2rem;
+    max-width: 28rem;
+    row-gap: 0.8rem;
+    background-color: $paletteBackgroundDefault;
+
+    h6 {
+      margin-bottom: 1.6rem;
+      text-align: center;
+    }
+
+    .buttons_container {
+      padding: 0 2.4rem;
+      display: flex;
+      row-gap: 0.8rem;
+      flex-direction: column;
+    }
   }
 
-  .form {
+  .password__remeber {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.4rem 0;
   }
 
-  .footer {
-    background-color: $primary;
+  .register__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.6rem 0;
+  }
+
+  .form__divider {
+    align-self: stretch;
+    justify-self: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    span {
+      font-weight: bold;
+    }
+
+    hr {
+      width: 25%;
+      background-color: #ffffff70;
+    }
   }
 }
