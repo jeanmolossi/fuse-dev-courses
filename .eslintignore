@@ -3,3 +3,4 @@ coverage
 dist
 public
 *.scss
+*.svg
