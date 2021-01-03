@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Login from '@/presentation/pages/login/Login';
+import { Login } from '@/main/factories/pages';
 
 export const Router = (): JSX.Element => {
   return (
