@@ -16,10 +16,12 @@ type SutTypes = {
 
 class ValidationSpy implements Validation {
   errorMessage: string;
-  input: unknown;
+  fieldName: string;
+  fieldValue: string | boolean | number;
 
-  validate(input: unknown): string {
-    this.input = input;
+  validate(fieldName: string, fieldValue: string | boolean | number): string {
+    this.fieldName = fieldName;
+    this.fieldValue = fieldValue;
     return this.errorMessage;
   }
 }
@@ -70,9 +72,8 @@ describe('Login Component', () => {
       target: { value: 'valid-email' },
     });
 
-    expect(validationSpy.input).toEqual({
-      email: 'valid-email',
-    });
+    expect(validationSpy.fieldName).toBe('email');
+    expect(validationSpy.fieldValue).toBe('valid-email');
 
     const passwordField = sut
       .getByTestId('password-password-field')
@@ -80,8 +81,7 @@ describe('Login Component', () => {
 
     fireEvent.input(passwordField, { target: { value: 'valid-password' } });
 
-    expect(validationSpy.input).toEqual({
-      password: 'valid-password',
-    });
+    expect(validationSpy.fieldName).toBe('password');
+    expect(validationSpy.fieldValue).toBe('valid-password');
   });
 });
