@@ -13,8 +13,12 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "sourceType": "script",
+    "ecmaVersion": 2017,
+    "project": ["./tsconfig.json"],
+    "tsconfigRootDir": "./"
   },
+  "parser": "@typescript-eslint/parser",
   "plugins": ["react", "@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
     "prettier/prettier": "error",
@@ -24,9 +28,11 @@
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "@typescript-eslint/explicit-function-return-type": "off",
 
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+    "react/prop-types": "off",
 
     "import-helpers/order-imports": [
       "error",
