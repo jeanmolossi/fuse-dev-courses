@@ -68,7 +68,7 @@ export const FormHandler = ({
 
   useEffect(() => {
     Object.keys(values).map(key => {
-      handleSetErrors(key, validation.validate({ [key]: values[key] }));
+      handleSetErrors(key, validation.validate(key, values[key]));
     });
   }, [values, handleSetErrors]);
 

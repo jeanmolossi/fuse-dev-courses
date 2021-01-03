@@ -1,3 +1,6 @@
 export interface Validation {
-  validate: (input: unknown) => string;
+  validate: (
+    fieldName: string,
+    fieldValue: string | boolean | number,
+  ) => string;
 }
