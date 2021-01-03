@@ -42,18 +42,18 @@ export const FormHandler = ({
   const [values, setValues] = useState<FormValues>({});
   const [errors, setErrors] = useState<FormErrors>({});
 
+  const handleSetErrors = useCallback((fieldName: string, error: string) => {
+    setErrors(currentErrors => ({
+      ...currentErrors,
+      [fieldName]: error,
+    }));
+  }, []);
+
   const handleChangeField = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValues(currentValues => ({
       ...currentValues,
       [e.target.name]:
         e.target.type === 'checkbox' ? e.target.checked : e.target.value,
-    }));
-  }, []);
-
-  const handleSetErrors = useCallback((fieldName: string, error: string) => {
-    setErrors(currentErrors => ({
-      ...currentErrors,
-      [fieldName]: error,
     }));
   }, []);
 
