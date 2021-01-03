@@ -77,4 +77,25 @@ describe('Login Component', () => {
     expect(validationSpy.fieldName).toBe('password');
     expect(validationSpy.fieldValue).toBe(fakePassword);
   });
+
+  test('Should show email error if Validation fails', () => {
+    const { sut, validationSpy } = makeSut();
+
+    const errorMessage = faker.random.words();
+    validationSpy.errorMessage = errorMessage;
+
+    const emailBlock = sut.getByTestId('email-email-field');
+
+    const emailField = emailBlock.querySelector('input');
+
+    const fakeEmail = faker.internet.email();
+
+    fireEvent.input(emailField, {
+      target: { value: fakeEmail },
+    });
+
+    const emailError = emailBlock.querySelector('p.Mui-error');
+
+    expect(emailError.textContent).toBe(errorMessage);
+  });
 });
