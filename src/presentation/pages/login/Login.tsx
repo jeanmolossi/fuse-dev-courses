@@ -11,9 +11,14 @@ import {
 import { Link } from 'react-router-dom';
 import { TextInput, Button } from '@/presentation/components';
 import { FormHandler } from '@/presentation/hooks/useForm';
+import { Validation } from '@/presentation/protocols/validation';
 import styles from './styles.scss';
 
-const Login = (): JSX.Element => {
+type LoginProps = {
+  validation: Validation;
+};
+
+const Login = ({ validation }: LoginProps): JSX.Element => {
   const [isEmailFilled, setIsEmailFilled] = useState(false);
   const [isPasswordFilled, setIsPasswordFilled] = useState(false);
 
@@ -29,6 +34,7 @@ const Login = (): JSX.Element => {
                 console.log(data);
               }}
               className={styles.form__section}
+              validation={validation}
             >
               <TextInput
                 name="email"
@@ -76,6 +82,7 @@ const Login = (): JSX.Element => {
                 disabled={!isPasswordFilled || !isEmailFilled}
                 fullWidth
                 type="submit"
+                data-testid="submit-button"
               >
                 Entrar
               </Button>
