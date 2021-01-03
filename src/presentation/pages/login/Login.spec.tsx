@@ -6,25 +6,13 @@ import {
   cleanup,
 } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { Validation } from '@/presentation/protocols/validation';
+import { ValidationSpy } from '@/presentation/test';
 import Login from './Login';
 
 type SutTypes = {
   sut: RenderResult;
   validationSpy: ValidationSpy;
 };
-
-class ValidationSpy implements Validation {
-  errorMessage: string;
-  fieldName: string;
-  fieldValue: string | boolean | number;
-
-  validate(fieldName: string, fieldValue: string | boolean | number): string {
-    this.fieldName = fieldName;
-    this.fieldValue = fieldValue;
-    return this.errorMessage;
-  }
-}
 
 const makeSut = (): SutTypes => {
   const validationSpy = new ValidationSpy();
