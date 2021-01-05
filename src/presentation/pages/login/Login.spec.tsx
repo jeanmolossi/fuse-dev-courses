@@ -82,7 +82,7 @@ describe('Login Component', () => {
     const { sut, validationSpy } = makeSut();
 
     const errorMessage = faker.random.words();
-    validationSpy.errorMessage = errorMessage;
+    validationSpy.errorMessage[0] = errorMessage;
 
     const emailBlock = sut.getByTestId('email-email-field');
 

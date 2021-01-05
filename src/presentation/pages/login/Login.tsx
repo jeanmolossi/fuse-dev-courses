@@ -43,6 +43,7 @@ const Login = ({ validation }: LoginProps): JSX.Element => {
                 required
                 variant="outlined"
                 onChange={e => setIsEmailFilled(!!e.target.value)}
+                autoComplete="off"
               />
 
               <TextInput
@@ -52,6 +53,7 @@ const Login = ({ validation }: LoginProps): JSX.Element => {
                 required
                 variant="outlined"
                 onChange={e => setIsPasswordFilled(!!e.target.value)}
+                autoComplete="off"
               />
 
               <div className={styles.password__remeber}>
