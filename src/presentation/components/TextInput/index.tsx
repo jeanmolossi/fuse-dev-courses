@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { TextField, TextFieldProps } from '@material-ui/core';
 import { formContext } from '@/presentation/hooks/useForm';
 import styles from './styles.scss';
@@ -36,8 +36,10 @@ const TextInput = ({
       required={required}
       fullWidth={fullWidth}
       {...rest}
-      error={!!errors[name]}
-      helperText={helperText || (errors[name] ? errors[name] : helperText)}
+      error={!!errors[name]?.[0]}
+      helperText={
+        helperText || (errors[name]?.[0] ? errors[name]?.[0] : helperText)
+      }
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
         handleChangeField(e);
         if (onChange) {

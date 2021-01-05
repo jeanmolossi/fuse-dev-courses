@@ -21,14 +21,14 @@ export type FormValues = {
 };
 
 export type FormErrors = {
-  [field: string]: string;
+  [field: string]: string[];
 };
 
 type FormContextProps = {
   values: FormValues;
   errors: FormErrors;
   handleChangeField: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSetErrors: (fieldName: string, error: string) => void;
+  handleSetErrors: (fieldName: string, errors: string[]) => void;
 };
 
 export const formContext = createContext<FormContextProps>(null);
@@ -42,10 +42,10 @@ export const FormHandler = ({
   const [values, setValues] = useState<FormValues>({});
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleSetErrors = useCallback((fieldName: string, error: string) => {
+  const handleSetErrors = useCallback((fieldName: string, errors: string[]) => {
     setErrors(currentErrors => ({
       ...currentErrors,
-      [fieldName]: error,
+      [fieldName]: errors,
     }));
   }, []);
 
