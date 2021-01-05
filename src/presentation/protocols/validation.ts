@@ -2,5 +2,5 @@ export interface Validation {
   validate: (
     fieldName: string,
     fieldValue: string | boolean | number,
-  ) => string;
+  ) => string[];
 }
