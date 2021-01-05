@@ -1,8 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Login, Dashboard } from '@/main/factories/pages';
 
-export const Router = (): JSX.Element => {
+type RoutesOfRouter = {
+  Login: React.FC;
+  Dashboard: React.FC;
+};
+
+export const Router = ({ Login, Dashboard }: RoutesOfRouter): JSX.Element => {
   return (
     <BrowserRouter>
       <Switch>
