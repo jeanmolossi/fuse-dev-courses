@@ -4,6 +4,7 @@ import React, {
   FormEvent,
   HTMLAttributes,
   useCallback,
+  useContext,
   useEffect,
   useState,
 } from 'react';
@@ -82,3 +83,9 @@ export const FormHandler = ({
     </formContext.Provider>
   );
 };
+
+export function useFormHandler(): FormContextProps {
+  const context = useContext(formContext);
+
+  return context;
+}

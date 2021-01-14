@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { TextField, TextFieldProps } from '@material-ui/core';
-import { formContext } from '@/presentation/hooks/useForm';
+import { useFormHandler } from '@/presentation/hooks/useForm';
 import styles from './styles.scss';
 
 type TextInputProps = {
@@ -22,7 +22,7 @@ const TextInput = ({
   helperText = '',
   ...rest
 }: TextInputProps): JSX.Element => {
-  const { handleChangeField, values, errors } = useContext(formContext);
+  const { handleChangeField, values, errors } = useFormHandler();
 
   return (
     <TextField
