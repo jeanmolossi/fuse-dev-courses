@@ -31,7 +31,7 @@
     "date-fns": "2.16.1",
     "express": "^4.17.1",
     "express-history-api-fallback": "^2.2.1",
-    "firebase": "8.1.1",
+    "firebase": "^8.2.1",
     "formsy-react": "2.2.1",
     "google-map-react": "2.1.9",
     "history": "4.10.1",
