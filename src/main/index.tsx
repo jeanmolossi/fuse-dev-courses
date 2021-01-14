@@ -4,6 +4,7 @@ import { Login, Dashboard } from '@/main/factories/pages';
 import { Router } from '@/main/routes/router';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import '@/presentation/styles/global.scss';
+import './config/firebase';
 
 ReactDOM.render(
   <Router Login={Login} Dashboard={Dashboard} />,
