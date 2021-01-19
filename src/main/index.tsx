@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Login, Dashboard } from '@/main/factories/pages';
-import { Router } from '@/main/routes/router';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import '@/presentation/styles/global.scss';
 import './config/firebase';
+import { AppFactory } from './factories/app';
 
-ReactDOM.render(
-  <Router Login={Login} Dashboard={Dashboard} />,
-  document.getElementById('root'),
-);
+ReactDOM.render(<AppFactory />, document.getElementById('root'));
