@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -7,10 +7,11 @@ import {
   FormControlLabel,
   Checkbox,
   Divider,
+  CircularProgress,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { TextInput, Button } from '@/presentation/components';
-import { FormHandler } from '@/presentation/hooks/useForm';
+import { FormHandler, useFormHandler } from '@/presentation/hooks/useForm';
 import { Validation } from '@/presentation/protocols/validation';
 import styles from './styles.scss';
 
@@ -19,9 +20,6 @@ type LoginProps = {
 };
 
 const Login = ({ validation }: LoginProps): JSX.Element => {
-  const [isEmailFilled, setIsEmailFilled] = useState(false);
-  const [isPasswordFilled, setIsPasswordFilled] = useState(false);
-
   return (
     <div className={styles.login}>
       <div className={styles.flex__cards}>
@@ -42,7 +40,6 @@ const Login = ({ validation }: LoginProps): JSX.Element => {
                 type="email"
                 required
                 variant="outlined"
-                onChange={e => setIsEmailFilled(!!e.target.value)}
                 autoComplete="off"
               />
 
@@ -52,7 +49,6 @@ const Login = ({ validation }: LoginProps): JSX.Element => {
                 type="password"
                 required
                 variant="outlined"
-                onChange={e => setIsPasswordFilled(!!e.target.value)}
                 autoComplete="off"
               />
 
@@ -77,17 +73,7 @@ const Login = ({ validation }: LoginProps): JSX.Element => {
                 </Link>
               </div>
 
-              <Button
-                variant="contained"
-                color="primary"
-                aria-label="Entrar"
-                disabled={!isPasswordFilled || !isEmailFilled}
-                fullWidth
-                type="submit"
-                data-testid="submit-button"
-              >
-                Entrar
-              </Button>
+              <SubmitButton />
             </FormHandler>
 
             <div className={styles.form__divider}>
@@ -127,6 +113,28 @@ const Login = ({ validation }: LoginProps): JSX.Element => {
         </Card>
       </div>
     </div>
+  );
+};
+
+const SubmitButton = () => {
+  const { isInvalidForm, isSubmitting } = useFormHandler();
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      aria-label="Entrar"
+      disabled={isInvalidForm || isSubmitting}
+      fullWidth
+      type="submit"
+      data-testid="submit-button"
+      startIcon={
+        isSubmitting ? (
+          <CircularProgress color="secondary" size={18} />
+        ) : undefined
+      }
+    >
+      Entrar
+    </Button>
   );
 };
 
