@@ -13,7 +13,7 @@ import { Validation } from '@/presentation/protocols/validation';
 interface FormHandlerProps
   extends Omit<HTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   children?: React.ReactNode;
-  onSubmit: (data?: FormValues) => void;
+  onSubmit: (data?: FormValues) => Promise<void> | void;
   validation: Validation;
 }
 
@@ -28,6 +28,8 @@ export type FormErrors = {
 type FormContextProps = {
   values: FormValues;
   errors: FormErrors;
+  isInvalidForm: boolean;
+  isSubmitting: boolean;
   handleChangeField: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSetErrors: (fieldName: string, errors: string[]) => void;
 };
@@ -42,6 +44,8 @@ export const FormHandler = ({
 }: FormHandlerProps): JSX.Element => {
   const [values, setValues] = useState<FormValues>({});
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isInvalidForm, setIsInvalidForm] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSetErrors = useCallback((fieldName: string, errors: string[]) => {
     setErrors(currentErrors => ({
@@ -59,10 +63,15 @@ export const FormHandler = ({
   }, []);
 
   const handleSubmit = useCallback(
-    (e: FormEvent) => {
+    async (e: FormEvent) => {
       e.preventDefault();
-
-      onSubmit(values);
+      setIsSubmitting(true);
+      try {
+        await onSubmit(values);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsSubmitting(false);
     },
     [values, errors],
   );
@@ -73,9 +82,24 @@ export const FormHandler = ({
     });
   }, [values, handleSetErrors]);
 
+  useEffect(() => {
+    Object.keys(errors).forEach(errorKey => {
+      errors[errorKey].length
+        ? setIsInvalidForm(true)
+        : setIsInvalidForm(false);
+    });
+  }, [errors]);
+
   return (
     <formContext.Provider
-      value={{ values, errors, handleChangeField, handleSetErrors }}
+      value={{
+        values,
+        errors,
+        isInvalidForm,
+        isSubmitting,
+        handleChangeField,
+        handleSetErrors,
+      }}
     >
       <form {...rest} onSubmit={handleSubmit}>
         {children}
