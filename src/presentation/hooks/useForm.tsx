@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { Validation } from '../protocols/validation';
+import { Validation } from '@/presentation/protocols/validation';
 
 interface FormHandlerProps
   extends Omit<HTMLAttributes<HTMLFormElement>, 'onSubmit'> {
