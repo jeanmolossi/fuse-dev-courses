@@ -8,4 +8,9 @@ export namespace AccountModel {
     user: User;
     accessToken: string;
   };
+
+  export type Credentials = {
+    email: string;
+    password: string;
+  };
 }
