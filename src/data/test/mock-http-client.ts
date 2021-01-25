@@ -1,20 +1,20 @@
 import {
-  HttpPostClient,
-  HttpPostParams,
+  HttpClient,
+  HttpParams,
   HttpResponse,
   HttpStatusCode,
 } from '@/data/protocols/http';
 
-export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
+export class HttpClientSpy<T, R> implements HttpClient<T, R> {
   url?: string;
-
+  headers?: any;
   body?: T;
 
   response: HttpResponse<R> = {
     statusCode: HttpStatusCode.OK,
   };
 
-  async post(params: HttpPostParams<T>): Promise<HttpResponse<R>> {
+  async request(params: HttpParams<T>): Promise<HttpResponse<R>> {
     const { url, body } = params;
 
     this.url = url;

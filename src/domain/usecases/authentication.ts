@@ -6,5 +6,5 @@ export type Credentials = {
 };
 
 export interface AuthenticationUseCase {
-  auth(credentials: Credentials): Promise<AccountModel>;
+  auth(credentials: Credentials): Promise<AccountModel.AccessModel>;
 }

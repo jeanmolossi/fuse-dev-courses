@@ -7,6 +7,12 @@ export const mockAuthentication = (): Credentials => ({
   password: faker.internet.password(),
 });
 
-export const mockAccountModel = (): AccountModel => ({
+export const mockAccountModelUser = (): AccountModel.User => ({
+  id: faker.random.uuid(),
+  email: faker.internet.email(),
+});
+
+export const mockAccountModel = (): AccountModel.AccessModel => ({
   accessToken: faker.random.uuid(),
+  user: mockAccountModelUser(),
 });

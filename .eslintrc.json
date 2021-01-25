@@ -27,8 +27,9 @@
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-namespace": "off",
 
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
@@ -48,6 +49,11 @@
           "/^@shared/",
           "/^@modules/",
           "/^@//",
+          "/^@/main/",
+          "/^@/presentation/",
+          "/^@/infra/",
+          "/^@/data/",
+          "/^@/domain/",
           ["parent", "sibling"],
           "index"
         ]
