@@ -3,4 +3,3 @@ coverage
 dist
 public/*
 src/main/config/firebase.ts
-*.scss

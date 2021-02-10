@@ -1,0 +1,62 @@
+@import '../../styles/colors.scss';
+
+button,
+a {
+  span {
+    font-weight: 400;
+  }
+
+  &.contained-default-button {
+    background-color: white !important;
+    span {
+      color: $palettePrimaryMain !important;
+    }
+  }
+
+  &.contained-primary-button {
+    background-color: $palettePrimaryMain !important;
+  }
+
+  &.contained-secondary-button {
+    background-color: $paletteSecondaryMain !important;
+  }
+
+  &.outlined-default-button {
+    border-color: white !important;
+  }
+
+  &.outlined-primary-button {
+    border-color: $palettePrimaryMain !important;
+    span {
+      color: $palettePrimaryMain !important;
+    }
+  }
+
+  &.outlined-secondary-button {
+    border-color: $paletteSecondaryMain !important;
+    span {
+      color: $paletteSecondaryMain !important;
+    }
+  }
+
+  &.text-default-button span {
+    color: white !important;
+  }
+
+  &.text-primary-button span {
+    color: $palettePrimaryMain !important;
+  }
+
+  &.text-secondary-button span {
+    color: $paletteSecondaryMain !important;
+  }
+
+  &[disabled] {
+    background-color: $paletteSecondaryWhiteOpacity !important;
+    opacity: 0.7 !important;
+
+    span {
+      color: #ffffff70 !important;
+    }
+  }
+}

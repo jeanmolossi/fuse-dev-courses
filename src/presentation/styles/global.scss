@@ -1,0 +1,142 @@
+@import './colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  code:not([class*='language-']) {
+    color: $paletteTypeLight;
+    @if $paletteTypeLight {
+      background-color: rgba(255, 255, 255, 0.9);
+    } @else {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+    padding: 2px 3px;
+    border-radius: 2;
+    line-height: 1.7;
+  }
+
+  table.simple tbody tr td {
+    border-color: $paletteDivider;
+  }
+
+  table.simple thead tr th {
+    border-color: $paletteDivider;
+  }
+
+  a:not([role='button']) {
+    color: $paletteSecondaryMain;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  a.link,
+  a:not([role='button'])[target='_blank'] {
+    background: fade($paletteSecondaryMain, 0.2);
+    color: inherit;
+    border-bottom: 1px solid $paletteDivider;
+    text-decoration: none;
+    &:hover {
+      background: fade($paletteSecondaryMain, 0.3);
+      text-decoration: none;
+    }
+  }
+
+  [class^='border-'] {
+    border-color: $paletteDivider;
+  }
+
+  [class*='border-'] {
+    border-color: $paletteDivider;
+  }
+
+  hr {
+    border-color: $paletteDivider;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @if $paletteTypeLight {
+      box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.24);
+    } @else {
+      box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.24);
+    }
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    @if $paletteTypeLight {
+      box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.37);
+    } @else {
+      box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.37);
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span {
+    color: $paletteSecondaryContrastText;
+    font-family: Ubuntu, Roboto, Helvetica Neue, Arial, sans-serif;
+  }
+
+  html {
+    font-size: 62.5%;
+    font-family: Ubuntu, Roboto, Helvetica Neue, Arial, sans-serif;
+    background-color: #121212;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+  }
+
+  h1,
+  .h1 {
+    font-size: 24px;
+  }
+
+  h2,
+  .h2 {
+    font-size: 20px;
+  }
+
+  h3,
+  .h3 {
+    font-size: 16px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 15px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 13px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 12px;
+  }
+
+  a {
+    font-family: Ubuntu, Roboto, Helvetica Neue, Arial, sans-serif;
+  }
+}

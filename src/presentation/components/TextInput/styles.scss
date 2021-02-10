@@ -1,0 +1,34 @@
+@import '../../styles/colors.scss';
+
+.input_label {
+  fieldset {
+    transition: 0.2s ease-in-out;
+    border-color: $paletteSecondaryWhiteOpacity !important;
+    border-width: 0.15rem;
+  }
+
+  &:hover fieldset {
+    border-color: $palettePrimaryLight !important;
+  }
+
+  &:focus-within fieldset {
+    border-color: $palettePrimaryMain !important;
+  }
+
+  &:focus-within label {
+    color: $palettePrimaryMain;
+  }
+
+  fieldset {
+    border-color: $palettePrimaryMain;
+  }
+
+  label,
+  input {
+    color: $palettePrimaryLight;
+  }
+
+  & + .input_label {
+    margin-top: 16px;
+  }
+}
